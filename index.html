@@ -44,14 +44,51 @@
                 <h1 class="text-xl font-bold tracking-tight text-slate-800">Scraper<span class="text-emerald-600">Deals</span></h1>
             </div>
 
-            <button onclick="toggleCart()" class="relative p-2 rounded-full hover:bg-slate-100 transition-colors focus:outline-none" title="Open Shopping List">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-slate-700">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                </svg>
-                <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-emerald-600 rounded-full opacity-0 transition-opacity">0</span>
-            </button>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleSettings()" class="p-2 rounded-full hover:bg-slate-100 transition-colors focus:outline-none" title="Settings">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-slate-600">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.581-.495.644-.869l.214-1.281z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </button>
+                <button onclick="toggleCart()" class="relative p-2 rounded-full hover:bg-slate-100 transition-colors focus:outline-none" title="Open Shopping List">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-slate-700">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg>
+                    <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-emerald-600 rounded-full opacity-0 transition-opacity">0</span>
+                </button>
+            </div>
         </div>
     </header>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm" onclick="toggleSettings()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-2xl shadow-2xl p-6">
+            <h2 class="text-xl font-bold text-slate-800 mb-4">Settings</h2>
+            <p class="text-sm text-slate-500 mb-4">Enter your EmailJS API keys to enable email functionality.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Service ID</label>
+                    <input type="text" id="setting-service-id" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Template ID</label>
+                    <input type="text" id="setting-template-id" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Public Key</label>
+                    <input type="text" id="setting-public-key" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-2 mt-6">
+                <button onclick="toggleSettings()" class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Cancel</button>
+                <button onclick="saveSettings()" class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-md">Save Settings</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
@@ -160,6 +197,7 @@
         // --- Initialization ---
         document.addEventListener('DOMContentLoaded', () => {
             updateCartUI();
+            loadSettings();
         });
 
         // --- Functions ---
@@ -309,18 +347,19 @@
                 return;
             }
 
-            // EmailJS Configuration - PLACEHOLDERS
-            // Users need to replace these with their own from emailjs.com
-            const SERVICE_ID = "YOUR_SERVICE_ID";
-            const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-            const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+            // Get keys from localStorage
+            const SERVICE_ID = localStorage.getItem('emailjs_service_id');
+            const TEMPLATE_ID = localStorage.getItem('emailjs_template_id');
+            const PUBLIC_KEY = localStorage.getItem('emailjs_public_key');
 
-            if (SERVICE_ID === "YOUR_SERVICE_ID") {
-                alert("EmailJS is not configured. Please open index.html and set your Service ID, Template ID, and Public Key.");
+            if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+                if(confirm("EmailJS is not configured. Would you like to open Settings to enter your API keys?")) {
+                    toggleSettings();
+                }
                 return;
             }
 
-            // Initialize EmailJS (if not already done globally)
+            // Initialize EmailJS
             emailjs.init(PUBLIC_KEY);
 
             let message = "Here is my shopping list:\n\n";
@@ -352,6 +391,35 @@
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 });
+        }
+
+        // --- Settings Functions ---
+
+        function toggleSettings() {
+            const modal = document.getElementById('settings-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function saveSettings() {
+            const serviceId = document.getElementById('setting-service-id').value.trim();
+            const templateId = document.getElementById('setting-template-id').value.trim();
+            const publicKey = document.getElementById('setting-public-key').value.trim();
+
+            if (serviceId && templateId && publicKey) {
+                localStorage.setItem('emailjs_service_id', serviceId);
+                localStorage.setItem('emailjs_template_id', templateId);
+                localStorage.setItem('emailjs_public_key', publicKey);
+                alert("Settings saved!");
+                toggleSettings();
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+
+        function loadSettings() {
+            document.getElementById('setting-service-id').value = localStorage.getItem('emailjs_service_id') || '';
+            document.getElementById('setting-template-id').value = localStorage.getItem('emailjs_template_id') || '';
+            document.getElementById('setting-public-key').value = localStorage.getItem('emailjs_public_key') || '';
         }
 
         function updateCartUI() {
