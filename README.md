@@ -1,44 +1,32 @@
 # Danish Discount Food Scraper
 
-A simple web application to search for food discounts in Denmark across major supermarkets (Netto, Rema 1000, Coop365, etc.) and create a shopping list.
+A simple, static web application to search for food discounts in Denmark across Netto, Rema 1000, Coop 365, and Spar.
 
 ## Features
 
 - **Search Offers:** Real-time search for discounts using the Tjek (eTilbudsavis) API.
-- **Store Filtering:** Searches across multiple major Danish chains.
-- **Shopping List:** Add and remove items from a session-based shopping list.
-- **Responsive UI:** Built with Flask, HTMX, and Tailwind CSS for a fast, single-page-like experience.
-
-## Prerequisites
-
-- Python 3.7+
-- Internet connection (to query the external API)
-
-## Installation
-
-1. Clone the repository or download the files.
-2. Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
+- **Store Filtering:** Searches specifically for Netto, Rema 1000, Coop 365, and Spar.
+- **Shopping List:** Add items to a local shopping list (saved in your browser).
+- **Minimalistic UI:** Clean, responsive design using Tailwind CSS.
 
 ## Usage
 
-1. Start the Flask application:
+### Local Development
+1. Clone the repository.
+2. Open `index.html` in your browser.
+   - Note: Some browsers may block API calls from `file://`. It is recommended to use a local server:
+   ```bash
+   python3 -m http.server
+   ```
+   Then open `http://localhost:8000`.
 
-```bash
-python app.py
-```
-
-2. Open your web browser and navigate to:
-   http://127.0.0.1:5000
-
-3. Type in the search box (e.g., "is", "kød", "mælk") and press Enter to see offers.
-4. Click "Add to List" on any offer to save it to your shopping list.
+### Deployment (GitHub Pages)
+1. Push this repository to GitHub.
+2. Go to Settings > Pages.
+3. Select the `main` branch as the source.
+4. Your site will be live!
 
 ## Tech Stack
 
-- **Backend:** Python, Flask
-- **Frontend:** HTML, Tailwind CSS (via CDN), HTMX (via CDN)
-- **Data Source:** Tjek Public API (api.etilbudsavis.dk)
+- **Frontend:** HTML, JavaScript (Vanilla), Tailwind CSS (CDN).
+- **Data Source:** Tjek Public API.
